@@ -201,6 +201,22 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
   .event-panel,.calendar-panel,.account-panel { padding:25px; }
 }
 
+/* Keep secondary teacher tools available without crowding the main navigation. */
+.sidebar-more { margin-top:10px; }
+.sidebar-more summary { padding:8px 10px; border-top:1px solid var(--line); color:#63747b; cursor:pointer; font-size:11px; font-weight:700; list-style:none; }
+.sidebar-more summary::-webkit-details-marker { display:none; }
+.sidebar-more summary::after { content:'＋'; float:right; font-size:14px; font-weight:400; }
+.sidebar-more[open] summary::after { content:'－'; }
+.sidebar-more nav { margin-top:4px; }
+@media (max-width:850px) {
+  .sidebar-more { position:relative; margin:0; }
+  .sidebar-more summary { display:flex; align-items:center; justify-content:center; width:58px; height:45px; padding:7px 5px; border:0; border-radius:8px; font-size:9px; text-align:center; }
+  .sidebar-more summary::after { display:none; }
+  .sidebar-more[open] nav { position:fixed; right:8px; bottom:68px; left:8px; display:grid; grid-template-columns:repeat(3,1fr); gap:4px; padding:7px; border:1px solid var(--line); border-radius:10px; background:#fff; box-shadow:0 8px 22px rgba(57,68,72,.12); }
+  .sidebar-more[open] nav button { justify-content:center; width:auto; padding:8px 5px; font-size:9px; }
+  .sidebar-more[open] nav button.active::before { display:none; }
+}
+
 .sync-indicator { display:inline-flex; align-items:center; gap:5px; color:#4f5a5f; font-size:12px; font-weight:700; white-space:nowrap; }
 .sync-indicator.offline { color:#7a4d3a; }
 .sync-dot { width:7px; height:7px; border-radius:50%; background:#3f6650; box-shadow:0 0 0 3px rgba(63,102,80,.12); }
