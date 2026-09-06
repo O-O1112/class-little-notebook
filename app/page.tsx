@@ -51,6 +51,10 @@ function NotebookMark() {
 
 function Logo() { return <div className="simple-logo"><span className="brand-mark"><NotebookMark /></span><div><strong>班級小本本</strong><small>班級聯絡簿</small></div></div>; }
 
+function ViewTransition({ pageKey, children }: { pageKey: string; children: ReactNode }) {
+  return <div key={pageKey} className="view-transition">{children}</div>;
+}
+
 function Login({ data, updateData, onEnter }: { data: AppData; updateData: (next: AppData) => void; onEnter: (role: 'teacher' | 'family' | 'admin', remember: boolean) => void }) {
   const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [registerRole, setRegisterRole] = useState<'teacher' | 'family' | 'admin'>('teacher');
@@ -247,8 +251,10 @@ export default function Home() {
   if (!hydrated) return <main className="loading-page"><Logo /><span>載入工作區…</span></main>;
   if (!loggedIn) return <Login data={data} updateData={updateData} onEnter={(nextRole, remember) => { setRole(nextRole); setLoggedIn(true); if (remember) window.localStorage.setItem(sessionKey, JSON.stringify({ role: nextRole })); }} />;
   const logout = () => { if (!window.confirm('確定要登出嗎？')) return; window.localStorage.removeItem(sessionKey); setLoggedIn(false); setRole('teacher'); };
-  if (role === 'screen') return <><Topbar role={role} onRole={setRole} onLogout={logout} syncStatus={syncStatus} /><Screen data={data} homeworkId={screenHomeworkId} setRole={setRole} updateData={updateData} /></>;
-  return <div className={cn('simple-app', `theme-${data.theme}`, data.grid ? 'with-grid' : 'no-grid')}><Topbar role={role} onRole={(nextRole) => { setRole(nextRole); }} onLogout={logout} syncStatus={syncStatus} /><Sidebar role={role} teacherView={teacherView} familyView={familyView} adminView={adminView} setTeacherView={setTeacherView} setFamilyView={setFamilyView} setAdminView={setAdminView} data={data} />{role === 'teacher' ? teacherView === 'home' ? <TeacherHome data={data} updateData={updateData} go={setTeacherView} /> : teacherView === 'journal' ? <TeacherJournal data={data} updateData={updateData} /> : teacherView === 'homework' ? <TeacherHomework data={data} updateData={updateData} openScreen={(id) => { setScreenHomeworkId(id); setRole('screen'); }} /> : teacherView === 'calendar' ? <TeacherCalendar data={data} updateData={updateData} /> : teacherView === 'class' ? <TeacherClass data={data} updateData={updateData} /> : teacherView === 'tools' ? <TeacherTools data={data} updateData={updateData} /> : <TeacherSettings data={data} updateData={updateData} /> : role === 'admin' ? <AdminPanel view={adminView} data={data} updateData={updateData} go={setAdminView} /> : <FamilyView view={familyView} data={data} updateData={updateData} />}</div>;
+  if (role === 'screen') return <><Topbar role={role} onRole={setRole} onLogout={logout} syncStatus={syncStatus} /><ViewTransition pageKey={`screen-${screenHomeworkId || 'empty'}`}><Screen data={data} homeworkId={screenHomeworkId} setRole={setRole} updateData={updateData} /></ViewTransition></>;
+  const viewKey = role === 'teacher' ? `teacher-${teacherView}` : role === 'admin' ? `admin-${adminView}` : `family-${familyView}`;
+  const view = role === 'teacher' ? teacherView === 'home' ? <TeacherHome data={data} updateData={updateData} go={setTeacherView} /> : teacherView === 'journal' ? <TeacherJournal data={data} updateData={updateData} /> : teacherView === 'homework' ? <TeacherHomework data={data} updateData={updateData} openScreen={(id) => { setScreenHomeworkId(id); setRole('screen'); }} /> : teacherView === 'calendar' ? <TeacherCalendar data={data} updateData={updateData} /> : teacherView === 'class' ? <TeacherClass data={data} updateData={updateData} /> : teacherView === 'tools' ? <TeacherTools data={data} updateData={updateData} /> : <TeacherSettings data={data} updateData={updateData} /> : role === 'admin' ? <AdminPanel view={adminView} data={data} updateData={updateData} go={setAdminView} /> : <FamilyView view={familyView} data={data} updateData={updateData} />;
+  return <div className={cn('simple-app', `theme-${data.theme}`, data.grid ? 'with-grid' : 'no-grid')}><Topbar role={role} onRole={(nextRole) => { setRole(nextRole); }} onLogout={logout} syncStatus={syncStatus} /><Sidebar role={role} teacherView={teacherView} familyView={familyView} adminView={adminView} setTeacherView={setTeacherView} setFamilyView={setFamilyView} setAdminView={setAdminView} data={data} /><ViewTransition pageKey={viewKey}>{view}</ViewTransition></div>;
 }
 
 

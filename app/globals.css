@@ -275,3 +275,45 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 /* Keep standalone class-list cards aligned with the rest of the workspace. */
 .class-list-card { padding:22px; }
 @media (max-width:850px) { .class-list-card { padding:19px; } }
+
+/* Gentle notebook motion: page changes, touch feedback, and focus states. */
+@keyframes notebook-page-enter {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes notebook-fade-in {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes notebook-pop-in {
+  0% { opacity:0; transform:scale(.96); }
+  70% { opacity:1; transform:scale(1.015); }
+  100% { opacity:1; transform:scale(1); }
+}
+.view-transition { animation:notebook-page-enter .32s cubic-bezier(.22,.8,.24,1) both; transform-origin:top center; }
+.login-page { animation:notebook-fade-in .4s ease-out both; }
+.login-panel { animation:notebook-page-enter .42s cubic-bezier(.22,.8,.24,1) .04s both; }
+.loading-page { animation:notebook-fade-in .28s ease-out both; }
+.simple-topbar { animation:notebook-fade-in .32s ease-out both; }
+.simple-sidebar { animation:notebook-page-enter .38s cubic-bezier(.22,.8,.24,1) .04s both; }
+button, input, textarea, select, summary, a { -webkit-tap-highlight-color:transparent; }
+button, summary, a { transition:transform .16s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease; }
+button:active:not(:disabled), summary:active, a:active { transform:translateY(1px) scale(.98); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline:3px solid rgba(80,80,80,.28); outline-offset:3px; }
+.simple-card { transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.quick-grid button, .student-check-grid button, .screen-grid button { transition:transform .18s cubic-bezier(.22,.8,.24,1), box-shadow .2s ease, background-color .2s ease, border-color .2s ease; }
+.simple-sidebar nav button:hover { transform:translateX(2px); }
+.quick-grid button:hover, .student-check-grid button:hover:not(:disabled), .screen-grid button:hover { transform:translateY(-3px); box-shadow:0 8px 16px rgba(60,60,60,.1); }
+.quick-grid button:hover .quick-icon { transform:scale(1.08) rotate(-3deg); }
+.quick-icon { transition:transform .2s cubic-bezier(.22,.8,.24,1); }
+.simple-card:hover { border-color:#aaa; }
+.toggle span { transition:transform .22s cubic-bezier(.22,.8,.24,1); }
+.screen-grid button.selected { animation:notebook-pop-in .24s ease-out both; }
+.auth-links button:hover { transform:translateY(-1px); }
+@media (hover:hover) {
+  .simple-card:hover { transform:translateY(-2px); box-shadow:0 14px 32px rgba(50,50,50,.11); }
+  .simple-logo:hover .brand-mark svg { transform:rotate(-4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
+}
