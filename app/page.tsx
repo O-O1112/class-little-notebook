@@ -184,7 +184,9 @@ function Screen({ data, homeworkId, setRole, updateData }: { data: AppData; home
 
 export default function Home() {
   const [hydrated, setHydrated] = useState(false); const [loggedIn, setLoggedIn] = useState(false); const [role, setRole] = useState<Role>('teacher'); const [teacherView, setTeacherView] = useState<TeacherView>('home'); const [familyView, setFamilyView] = useState<FamilyView>('journal'); const [adminView, setAdminView] = useState<AdminView>('overview'); const [screenHomeworkId, setScreenHomeworkId] = useState<string | null>(null); const [data, setData] = useState<AppData>(emptyData);
+  const [, setDateTick] = useState(0);
   useEffect(() => { const timer = window.setTimeout(() => { try { const stored = window.localStorage.getItem(storageKey); if (stored) setData({ ...emptyData, ...JSON.parse(stored) }); const session = JSON.parse(window.localStorage.getItem(sessionKey) || 'null') as { role?: Role } | null; if (session?.role === 'teacher' || session?.role === 'family' || session?.role === 'admin') { setRole(session.role); setLoggedIn(true); } } catch { /* empty state is safe */ } setHydrated(true); }, 0); return () => window.clearTimeout(timer); }, []);
+  useEffect(() => { const timer = window.setInterval(() => setDateTick(Date.now()), 60_000); return () => window.clearInterval(timer); }, []);
   useEffect(() => { if (hydrated) window.localStorage.setItem(storageKey, JSON.stringify(data)); }, [data, hydrated]);
   const updateData = (next: AppData) => setData(next);
   if (!hydrated) return <main className="loading-page"><Logo /><span>載入工作區…</span></main>;
