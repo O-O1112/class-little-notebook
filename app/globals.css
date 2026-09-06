@@ -78,3 +78,20 @@ body { background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,10
 .simple-pill-gray { color:#53646c; background:#e4e9e6; }
 .event-list > div span:first-child,.compact-list > div > span:first-child,.work-head small,.screen-heading p,.screen-count span { color:#60727a; }
 @media (max-width:850px) { .simple-app.with-grid::before { left:20px; } }
+
+/* Final contrast pass: keep secondary copy readable on the paper grid. */
+:root { --ink:#172832; --muted:#425660; --line:#aebeb7; }
+.simple-logo small,.sidebar-context small,.workspace-head p,.quick-grid small,.compact-list small,.inline-note,.login-note { color:#4b6069; }
+.context-label,.kicker { color:#40545d; font-weight:600; }
+.simple-sidebar nav button,.top-role button,.top-user { color:#40535c; }
+.simple-sidebar nav button:hover,.simple-sidebar nav button.active { color:#172832; }
+.sidebar-help { color:#795b23; border-color:#dec98f; }
+.login-copy > span,.login-copy p,.login-field,.auth-links button { color:#40545d; }
+.login-copy p { font-weight:500; }
+.login-field input,.input-row input,.field input,.link-card input,.form-card textarea,.reply-card textarea,.attachment-field textarea { border-color:#aebeb7; }
+.login-field input::placeholder,.input-row input::placeholder,.field input::placeholder,.link-card input::placeholder,.form-card textarea::placeholder,.reply-card textarea::placeholder,.attachment-field textarea::placeholder { color:#6b7b82; opacity:1; }
+.login-choice small,.register-roles small { color:#52656d; }
+.login-note { color:#52656d; }
+.auth-links button { color:#2f6e55; font-weight:600; }
+.event-list > div span:first-child,.compact-list > div > span:first-child,.work-head small,.screen-heading p,.screen-count span { color:#4f626a; }
+.simple-pill-gray { color:#435760; background:#dfe7e3; }
