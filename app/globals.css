@@ -53,3 +53,28 @@ button:disabled { cursor:not-allowed; opacity:.5; }
 @media (max-width:600px) { .journal-date-picker,.homework-filters { align-items:stretch; flex-direction:column; }.journal-date-picker > button,.homework-filters select { width:100%; }.homework-filters .search-field { width:100%; }.bulk-student-card .field { flex-direction:column; align-items:stretch; }.bulk-student-card .field > button { width:100%; }.student-list > div { flex-wrap:wrap; }.student-list > div > span:nth-child(3) { width:100%; margin-left:37px; }.danger-panel { align-items:flex-start; flex-direction:column; }.danger-panel > button { width:100%; } }
 .auth-links { display:flex; justify-content:center; gap:16px; margin-top:14px; }.auth-links button { padding:0; border:0; background:transparent; color:#6d927f; font-size:10px; }.auth-links button:hover { text-decoration:underline; }.register-roles { display:grid; gap:7px; margin:16px 0 4px; }.register-roles button { display:flex; align-items:center; gap:9px; padding:10px; border:1px solid #e4e8e5; border-radius:9px; background:#fff; color:var(--ink); text-align:left; }.register-roles button.selected { border-color:#e1ac9e; background:#fff9f6; }.register-roles button > span { display:grid; gap:2px; }.register-roles small { color:#9da7ab; font-size:9px; }.forgot-card { display:grid; justify-items:center; gap:8px; padding:18px; border-radius:11px; background:#f6f8f5; color:#7c8c86; text-align:center; }.forgot-card strong { color:var(--ink); font-size:13px; }.forgot-card p { margin:0; font-size:10px; line-height:1.6; }
 .attachment-field { display:grid; gap:7px; color:#718089; font-size:11px; }.attachment-field > span { display:flex; align-items:center; gap:5px; }.attachment-field small { color:#a1abad; font-size:9px; }.attachment-field textarea { min-height:64px; resize:vertical; padding:9px; border:1px solid #dfe3df; border-radius:8px; outline:none; color:var(--ink); background:#fff; font-size:11px; line-height:1.5; }.attachment-field textarea:focus { border-color:#9dbdab; box-shadow:0 0 0 3px rgba(107,165,142,.12); }.attachment-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }.attachment-list a { display:inline-flex; align-items:center; gap:4px; padding:4px 6px; border-radius:6px; background:#f1f6f3; color:#608f78; font-size:9px; text-decoration:none; }.attachment-list a:hover { text-decoration:underline; }.family-work .attachment-list { margin:4px 0 10px; }.classroom-panel { margin-bottom:14px; padding:19px; }.classroom-panel .card-heading h2 { display:flex; align-items:center; gap:7px; }.classroom-panel .field { align-items:flex-end; }.classroom-actions { display:flex; gap:8px; margin-top:11px; }.event-panel .card-heading h2 { display:flex; align-items:center; gap:7px; }
+
+/* Notebook paper treatment and stronger reading contrast. */
+:root { --ink:#24343d; --muted:#5f7078; --line:#cbd6d1; --paper:#f4f7f4; }
+body { background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,108,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(62,103,108,.12) 1px,transparent 1px); background-size:24px 24px; }
+.simple-app.with-grid { background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,108,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(62,103,108,.12) 1px,transparent 1px); background-size:24px 24px; }
+.simple-app.with-grid::before { content:""; position:fixed; z-index:0; top:64px; bottom:0; left:32px; width:2px; pointer-events:none; background:rgba(224,111,93,.2); }
+.login-page { position:relative; overflow:hidden; background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,108,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(62,103,108,.12) 1px,transparent 1px); background-size:24px 24px; }
+.login-page::before { content:""; position:absolute; inset:0 auto 0 72px; width:2px; pointer-events:none; background:rgba(224,111,93,.2); }
+.login-page::after { content:""; position:absolute; top:32px; right:42px; width:128px; height:76px; pointer-events:none; border:1px dashed rgba(76,139,112,.35); border-radius:8px; transform:rotate(3deg); }
+.login-panel { position:relative; z-index:1; border-color:#c5d1cb; box-shadow:0 18px 40px rgba(42,60,66,.1); }
+.simple-card { border-color:#cbd6d1; box-shadow:0 10px 28px rgba(42,60,66,.075); }
+.simple-logo small,.sidebar-context small,.workspace-head p,.quick-grid small,.compact-list small,.inline-note,.login-note { color:#61727a; }
+.context-label,.kicker { color:#5d7078; }
+.simple-sidebar nav button { color:#566871; }
+.simple-sidebar nav button:hover,.simple-sidebar nav button.active { color:#24343d; }
+.top-role button { color:#596a72; }
+.top-user { color:#5b6c74; }
+.login-copy > span,.login-copy p,.login-field,.auth-links button { color:#53666f; }
+.login-copy h1 { color:#24343d; }
+.login-field input,.input-row input,.field input,.link-card input,.form-card textarea,.reply-card textarea,.attachment-field textarea { border-color:#bfcfc8; }
+.login-choice small,.register-roles small { color:#60727a; }
+.login-note { color:#61727a; }
+.simple-pill-gray { color:#53646c; background:#e4e9e6; }
+.event-list > div span:first-child,.compact-list > div > span:first-child,.work-head small,.screen-heading p,.screen-count span { color:#60727a; }
+@media (max-width:850px) { .simple-app.with-grid::before { left:20px; } }
