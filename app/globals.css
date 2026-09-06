@@ -230,3 +230,5 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
   .simple-app .screen-instruction span,.simple-app .screen-foot,.simple-app .screen-view .screen-heading p,.simple-app .screen-view .screen-count span { font-size:13px; }
   .simple-app .tool-description,.simple-app .group-control label,.simple-app .group-result > div,.simple-app .settings-row small { font-size:13px; }
 }
+.schedule-note { margin:10px 0 0; padding:10px 12px; border:1px dashed #bdb7ac; border-radius:8px; background:#faf8f0; }
+.scheduled-work { border-style:dashed; background:#fbf9f4; }
