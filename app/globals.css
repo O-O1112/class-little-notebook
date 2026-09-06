@@ -207,6 +207,18 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 .sync-indicator.offline .sync-dot { background:#a05b3c; box-shadow:0 0 0 3px rgba(160,91,60,.12); }
 @media (max-width:440px) { .sync-indicator { display:none; } }
 
+/* Keep flexible notebook rows stable when names, URLs, or titles are long. */
+.workspace-head > div,.card-heading > div,.work-head > div,.class-code-card > div,.family-work > div,.simple-card,.compact-list > div,.student-list > div,.event-list > div,.journal-history > button { min-width:0; }
+.workspace-head h1,.card-heading h2,.work-head h2,.family-work h2,.simple-card p,.compact-list strong,.student-list strong,.event-list strong,.setting-line strong,.journal-history > button strong { overflow-wrap:anywhere; word-break:break-word; }
+.compact-list strong,.event-list strong,.journal-history > button strong { min-width:0; }
+.student-list > div > span:last-of-type { min-width:0; overflow-wrap:anywhere; }
+.work-head-actions { max-width:100%; min-width:0; }
+.work-head-actions > button { white-space:normal; }
+.input-row,.field,.form-actions > div,.homework-filters,.journal-date-picker { min-width:0; }
+.input-row input,.field input,.field select,.link-card input,.form-card textarea,.reply-card textarea,.attachment-field textarea,.journal-date-picker input,.homework-filters select,.search-field input,.setting-line select { max-width:100%; min-width:0; }
+.screen-heading > div,.screen-instruction strong,.screen-foot span { min-width:0; overflow-wrap:anywhere; }
+@media (max-width:600px) { .work-head-actions { width:100%; justify-content:flex-start; }.work-head-actions > button { flex:1 1 auto; }.form-actions > div { flex-wrap:wrap; }.form-actions > div > button { min-width:0; } }
+
 /* Readability pass for dense helper copy and form controls. */
 .kicker,.context-label { font-size:12px; }
 .sidebar-context small,.setup-copy p,.quick-grid small,.compact-list > div > span:first-child,.compact-list small,.inline-note { font-size:12px; }
