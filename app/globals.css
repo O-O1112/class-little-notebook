@@ -100,3 +100,25 @@ body { background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,10
 :root { --ink:#171717; --muted:#4f4f4f; --line:#c7c7c7; --paper:#f4f4f4; --white:#fff; --peach:#e3e3e3; --peach-ink:#222; --green:#e8e8e8; --green-ink:#333; --blue:#ededed; --blue-ink:#333; --yellow:#e7e7e7; --yellow-ink:#333; }
 .simple-app.theme-blue,.simple-app.theme-mint { --peach:#e3e3e3; --peach-ink:#222; --green:#e8e8e8; --green-ink:#333; --blue:#ededed; --blue-ink:#333; }
 .simple-app,.login-page,.screen-view,.screen-empty,.loading-page { filter:grayscale(100%); }
+
+/* Warm paper is the only non-gray surface in the monochrome system. */
+:root { --paper:#f3eee4; }
+body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(91,84,72,.13) 1px,transparent 1px); background-size:24px 24px; }
+.simple-app.with-grid { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(91,84,72,.13) 1px,transparent 1px); background-size:24px 24px; }
+.login-page { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(91,84,72,.13) 1px,transparent 1px); background-size:24px 24px; }
+.screen-view,.screen-empty { background:#f3eee4; background-image:linear-gradient(rgba(91,84,72,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(91,84,72,.12) 1px,transparent 1px); background-size:24px 24px; }
+.simple-app,.login-page,.screen-view,.screen-empty,.loading-page { filter:none; }
+.simple-logo > span { background:#555; box-shadow:3px 3px 0 rgba(70,70,70,.18); }
+.simple-sidebar nav button.active::before { background:#555; }
+.sidebar-help { border-color:#cfc6b5; background:#fbf8f0; color:#5f584e; }
+.quick-icon.peach,.quick-icon.green,.quick-icon.blue,.subject-tag,.number-badge,.empty-icon { color:#333; background:#e2ded5; }
+.simple-pill-green,.simple-pill-orange,.simple-pill-blue,.simple-pill-gray { color:#333; background:#e2ded5; }
+.screen-view .screen-card { border-color:#c9c3b8; box-shadow:0 15px 35px rgba(70,66,58,.1); }
+.screen-view .screen-grid button { border-color:#c9c9c9; color:#444; }
+.screen-view .screen-grid button.selected { border-color:#777; background:#e8e5de; }
+.screen-view .screen-grid svg { color:#444; }
+.screen-view .screen-instruction span,.screen-view .screen-foot { color:#555; }
+.tool-panel-head,.settings-row strong svg { color:#555; }
+.theme-pick.coral,.theme-pick.blue,.theme-pick.mint { background:#555; }
+.toggle.on { background:#555; }
+.danger-panel { border-color:#c9c3b8; }.danger-panel strong { color:#444; }
