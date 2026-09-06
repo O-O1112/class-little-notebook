@@ -124,3 +124,12 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 .danger-panel { border-color:#c9c3b8; }.danger-panel strong { color:#444; }
 .auth-links button { color:#333; }
 .remember-login input { accent-color:#555; }
+.login-panel { width:min(100%,560px); padding:46px; }
+.login-copy { margin:54px 0 30px; }
+.login-copy h1 { font-size:34px; }
+.login-copy p { font-size:13px; }
+.login-field { margin-top:19px; font-size:12px; }
+.login-field input { height:46px; font-size:13px; }
+.login-panel .full-button { min-height:42px; margin-top:22px; font-size:14px; }
+.login-panel .login-note { font-size:10px; }
+@media (max-width:440px) { .login-panel { padding:24px 19px; }.login-copy { margin:38px 0 24px; }.login-copy h1 { font-size:28px; }.login-copy p { font-size:12px; }.login-field { margin-top:16px; font-size:11px; }.login-field input { height:38px; font-size:12px; }.login-panel .full-button { min-height:36px; font-size:12px; } }
