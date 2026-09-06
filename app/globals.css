@@ -216,3 +216,17 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 .tool-description,.group-control label,.group-result > div,.group-result span,.group-result strong,.draw-result small,.settings-row small,.event-list > div span:first-child,.event-list > div strong { font-size:12px; }
 .screen-instruction span,.screen-foot,.screen-view .screen-heading p,.screen-view .screen-count span { font-size:12px; }
 .login-choice small,.register-roles small,.forgot-card p { font-size:11px; }
+@media (min-width:851px) {
+  .simple-app .kicker,.simple-app .context-label { font-size:13px; }
+  .simple-app .simple-sidebar nav button { font-size:14px; }
+  .simple-app .sidebar-context small,.simple-app .workspace-head p,.simple-app .inline-note { font-size:13px; }
+  .simple-app .simple-card label,.simple-app .simple-card .attachment-field { font-size:14px; }
+  .simple-app .simple-card input,.simple-app .simple-card select,.simple-app .simple-card textarea { font-size:14px; }
+  .simple-app .simple-card small,.simple-app .simple-card .form-message,.simple-app .simple-card .form-error { font-size:13px; }
+  .simple-app .simple-card .subject-tag,.simple-app .simple-card .simple-pill { font-size:12px; }
+  .simple-app .simple-card .event-list > div,.simple-app .simple-card .student-list > div,.simple-app .simple-card .compact-list > div { font-size:13px; }
+  .simple-app .simple-card .event-list > div span:first-child,.simple-app .simple-card .compact-list > div > span:first-child { font-size:13px; }
+  .simple-app .form-actions,.simple-app .work-summary,.simple-app .reply-line,.simple-app .journal-history > button span,.simple-app .journal-history > button strong { font-size:13px; }
+  .simple-app .screen-instruction span,.simple-app .screen-foot,.simple-app .screen-view .screen-heading p,.simple-app .screen-view .screen-count span { font-size:13px; }
+  .simple-app .tool-description,.simple-app .group-control label,.simple-app .group-result > div,.simple-app .settings-row small { font-size:13px; }
+}
