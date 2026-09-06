@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "class-little-notebook",
+  "pages_build_output_dir": "gh-pages",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "class-little-notebook",
+      "database_id": "437a39ad-a156-48c0-87d5-04f0964ab38f"
+    }
+  ]
+}
