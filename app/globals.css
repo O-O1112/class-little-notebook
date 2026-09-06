@@ -201,6 +201,12 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
   .event-panel,.calendar-panel,.account-panel { padding:25px; }
 }
 
+.sync-indicator { display:inline-flex; align-items:center; gap:5px; color:#4f5a5f; font-size:12px; font-weight:700; white-space:nowrap; }
+.sync-indicator.offline { color:#7a4d3a; }
+.sync-dot { width:7px; height:7px; border-radius:50%; background:#3f6650; box-shadow:0 0 0 3px rgba(63,102,80,.12); }
+.sync-indicator.offline .sync-dot { background:#a05b3c; box-shadow:0 0 0 3px rgba(160,91,60,.12); }
+@media (max-width:440px) { .sync-indicator { display:none; } }
+
 /* Readability pass for dense helper copy and form controls. */
 .kicker,.context-label { font-size:12px; }
 .sidebar-context small,.setup-copy p,.quick-grid small,.compact-list > div > span:first-child,.compact-list small,.inline-note { font-size:12px; }
