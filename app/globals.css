@@ -41,4 +41,5 @@ button,input,textarea { font:inherit; } button { cursor:pointer; }
 .journal-history > button svg { color:#a1abae; }
 .journal-history > button.active strong { color:var(--green-ink); }
 .sent-reply { margin:0; padding:8px 10px; border-radius:7px; background:#f5f8f5; color:#788b82; font-size:10px; line-height:1.5; }
+.login-mode { display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-top:17px; padding:4px; border-radius:9px; background:#f3f5f2; }.login-mode button { padding:8px 7px; border:0; border-radius:6px; background:transparent; color:#8a969b; font-size:10px; }.login-mode button.active { background:#fff; color:var(--ink); font-weight:700; box-shadow:0 2px 5px rgba(57,68,72,.06); }
 @media (max-width:440px) { .work-head-actions { width:100%; justify-content:flex-start; }.work-head-actions > button:first-child { flex:1; }.setting-line { align-items:flex-start; flex-direction:column; }.setting-line select { width:100%; }.journal-history > button span { min-width:58px; } }
