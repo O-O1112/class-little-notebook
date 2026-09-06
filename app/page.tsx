@@ -40,7 +40,16 @@ function downloadFile(filename: string, content: string, type = 'application/jso
 function csvEscape(value: string | number) { return `"${String(value).replaceAll('"', '""')}"`; }
 function Pill({ children, tone = 'neutral' }: { children: ReactNode; tone?: 'neutral' | 'green' | 'orange' | 'gray' | 'blue' }) { return <Badge className={cn('simple-pill', `simple-pill-${tone}`)}>{children}</Badge>; }
 
-function Logo() { return <div className="simple-logo"><span>小</span><div><strong>班級小本本</strong><small>班級聯絡簿</small></div></div>; }
+function NotebookMark() {
+  return <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+    <path d="M7.5 8.5h17.8c3.8 0 6.7 2.4 7.2 5.8v17.2c-.9-2.4-3.2-3.9-6.1-3.9H7.5V8.5Z" />
+    <path d="M7.5 8.5v19.1h18.9c2.9 0 5.2 1.5 6.1 3.9" />
+    <path d="M12 14h8M12 18.5h10M12 23h7" />
+    <path d="M25.3 8.5v18.9" />
+  </svg>;
+}
+
+function Logo() { return <div className="simple-logo"><span className="brand-mark"><NotebookMark /></span><div><strong>班級小本本</strong><small>班級聯絡簿</small></div></div>; }
 
 function Login({ data, updateData, onEnter }: { data: AppData; updateData: (next: AppData) => void; onEnter: (role: 'teacher' | 'family' | 'admin', remember: boolean) => void }) {
   const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
