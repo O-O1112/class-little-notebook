@@ -19,7 +19,7 @@ type CalendarEvent = { id: string; date: string; title: string; type: '活動' |
 type AppData = { className: string; inviteCode: string; teacherPassword: string; teacherPasswordHash: string; students: Student[]; journals: Journal[]; homeworks: Homework[]; events: CalendarEvent[]; linkedChild: number | null; theme: 'coral' | 'blue' | 'mint'; grid: boolean };
 
 const emptyData: AppData = { className: '', inviteCode: '', teacherPassword: '', teacherPasswordHash: '', students: [], journals: [], homeworks: [], events: [], linkedChild: null, theme: 'coral', grid: true };
-const storageKey = 'class-little-notebook-prototype-v2';
+const storageKey = 'class-little-notebook-prototype-v4';
 const today = '2026-09-06';
 
 function cn(...items: Array<string | false | undefined | null>) { return items.filter(Boolean).join(' '); }
