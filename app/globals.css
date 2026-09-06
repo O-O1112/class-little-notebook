@@ -200,3 +200,19 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
   .settings-row { padding:21px 0; }
   .event-panel,.calendar-panel,.account-panel { padding:25px; }
 }
+
+/* Readability pass for dense helper copy and form controls. */
+.kicker,.context-label { font-size:12px; }
+.sidebar-context small,.setup-copy p,.quick-grid small,.compact-list > div > span:first-child,.compact-list small,.inline-note { font-size:12px; }
+.empty-state p,.form-actions,.field label,.form-card label,.link-card label { font-size:12px; }
+.compact-list,.compact-list strong,.student-list strong,.work-summary,.work-head small,.family-work p,.journal-date,.setting-line { font-size:12px; }
+.subject-tag,.simple-pill,.attachment-list a { font-size:11px; }
+.simple-pill { padding:4px 7px; }
+.form-message,.form-error,.form-card textarea,.reply-card textarea,.attachment-field,.attachment-field textarea { font-size:13px; }
+.attachment-field small,.bulk-student-card > p,.journal-date-picker label,.homework-filters select,.search-field,.filter-count { font-size:12px; }
+.attachment-field textarea,.bulk-student-card textarea { font-size:13px; line-height:1.65; }
+.journal-date-picker input,.homework-filters select,.search-field input,.setting-line select { font-size:13px; }
+.reply-line,.journal-history > button span,.journal-history > button strong,.sent-reply { font-size:12px; }
+.tool-description,.group-control label,.group-result > div,.group-result span,.group-result strong,.draw-result small,.settings-row small,.event-list > div span:first-child,.event-list > div strong { font-size:12px; }
+.screen-instruction span,.screen-foot,.screen-view .screen-heading p,.screen-view .screen-count span { font-size:12px; }
+.login-choice small,.register-roles small,.forgot-card p { font-size:11px; }
