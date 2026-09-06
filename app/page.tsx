@@ -205,7 +205,10 @@ export default function Home() {
         if (active && (session?.role === 'teacher' || session?.role === 'family' || session?.role === 'admin')) { setRole(session.role); setLoggedIn(true); }
       } catch { /* a missing session simply shows the login screen */ }
       try {
-        const response = await fetch('/api/state', { cache: 'no-store' });
+        const response = await Promise.race([
+          fetch('/api/state', { cache: 'no-store' }),
+          new Promise<Response>((_, reject) => window.setTimeout(() => reject(new Error('database-load-timeout')), 7000)),
+        ]);
         if (!response.ok) throw new Error('database-load-failed');
         const result = await response.json() as { data?: Partial<AppData> | null };
         databaseAvailable.current = true;
