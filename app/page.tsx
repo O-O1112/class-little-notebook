@@ -201,6 +201,10 @@ export default function Home() {
       let cached: AppData | null = null;
       try { const stored = window.localStorage.getItem(storageKey); if (stored) cached = { ...emptyData, ...JSON.parse(stored) }; } catch { cached = null; }
       try {
+        const session = JSON.parse(window.localStorage.getItem(sessionKey) || 'null') as { role?: Role } | null;
+        if (active && (session?.role === 'teacher' || session?.role === 'family' || session?.role === 'admin')) { setRole(session.role); setLoggedIn(true); }
+      } catch { /* a missing session simply shows the login screen */ }
+      try {
         const response = await fetch('/api/state', { cache: 'no-store' });
         if (!response.ok) throw new Error('database-load-failed');
         const result = await response.json() as { data?: Partial<AppData> | null };
