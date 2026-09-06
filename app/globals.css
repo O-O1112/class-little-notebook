@@ -95,3 +95,8 @@ body { background-color:#f4f7f4; background-image:linear-gradient(rgba(62,103,10
 .auth-links button { color:#2f6e55; font-weight:600; }
 .event-list > div span:first-child,.compact-list > div > span:first-child,.work-head small,.screen-heading p,.screen-count span { color:#4f626a; }
 .simple-pill-gray { color:#435760; background:#dfe7e3; }
+
+/* Monochrome notebook palette. */
+:root { --ink:#171717; --muted:#4f4f4f; --line:#c7c7c7; --paper:#f4f4f4; --white:#fff; --peach:#e3e3e3; --peach-ink:#222; --green:#e8e8e8; --green-ink:#333; --blue:#ededed; --blue-ink:#333; --yellow:#e7e7e7; --yellow-ink:#333; }
+.simple-app.theme-blue,.simple-app.theme-mint { --peach:#e3e3e3; --peach-ink:#222; --green:#e8e8e8; --green-ink:#333; --blue:#ededed; --blue-ink:#333; }
+.simple-app,.login-page,.screen-view,.screen-empty,.loading-page { filter:grayscale(100%); }
