@@ -279,6 +279,15 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 .login-field select:focus { border-color:#9dbdab; box-shadow:0 0 0 3px rgba(107,165,142,.12); }
 .login-field small { color:#52656d; font-size:10px; line-height:1.5; }
 .privacy-note { margin:13px 0 0; padding:10px 12px; border:1px dashed #c9c3b8; border-radius:8px; background:#faf8f0; color:#5f584e; font-size:12px; line-height:1.5; }
+.google-signin { display:grid; justify-items:center; min-height:42px; margin-top:14px; }
+.google-signin > span { align-self:center; color:#66747a; font-size:11px; }
+.google-signin-unconfigured { gap:5px; }
+.google-signin-unconfigured button { width:100%; min-height:42px; border:1px solid #c7c7c7; border-radius:8px; background:#fff; color:#222; font-size:13px; font-weight:700; }
+.google-signin-unconfigured button:hover { border-color:#777; box-shadow:0 5px 12px rgba(50,50,50,.09); }
+.google-signin small { color:#63747b; font-size:10px; text-align:center; }
+.google-profile-card { display:grid; gap:4px; margin-top:16px; padding:13px 14px; border:1px solid #c9c3b8; border-radius:9px; background:#faf8f0; }
+.google-profile-card strong { color:var(--ink); font-size:13px; }
+.google-profile-card span { color:#63747b; font-size:11px; overflow-wrap:anywhere; }
 
 /* Gentle notebook motion: page changes, touch feedback, and focus states. */
 @keyframes notebook-page-enter {

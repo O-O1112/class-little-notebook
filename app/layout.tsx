@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hant">
-      <body>{children}</body>
+      <body><script src="/app-config.js" defer />{children}</body>
     </html>
   );
 }
