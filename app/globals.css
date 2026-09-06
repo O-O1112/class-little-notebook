@@ -122,3 +122,5 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 .theme-pick.coral,.theme-pick.blue,.theme-pick.mint { background:#555; }
 .toggle.on { background:#555; }
 .danger-panel { border-color:#c9c3b8; }.danger-panel strong { color:#444; }
+.auth-links button { color:#333; }
+.remember-login input { accent-color:#555; }
