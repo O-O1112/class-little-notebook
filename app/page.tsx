@@ -15,9 +15,9 @@ type FamilyView = 'journal' | 'homework' | 'me';
 type Student = { number: number; name: string };
 type Journal = { id: string; date: string; homework: string; bring: string; notice: string; published: boolean; readBy: boolean; reply: string };
 type Homework = { id: string; subject: string; title: string; due: string; screenReported: number[]; familyDone: number[]; teacherConfirmed: number[] };
-type AppData = { className: string; inviteCode: string; students: Student[]; journals: Journal[]; homeworks: Homework[]; linkedChild: number | null };
+type AppData = { className: string; inviteCode: string; teacherPassword: string; students: Student[]; journals: Journal[]; homeworks: Homework[]; linkedChild: number | null };
 
-const emptyData: AppData = { className: '', inviteCode: '', students: [], journals: [], homeworks: [], linkedChild: null };
+const emptyData: AppData = { className: '', inviteCode: '', teacherPassword: '', students: [], journals: [], homeworks: [], linkedChild: null };
 const storageKey = 'class-little-notebook-prototype-v2';
 const today = '2026-09-06';
 
@@ -28,13 +28,19 @@ function Pill({ children, tone = 'neutral' }: { children: ReactNode; tone?: 'gre
 
 function Logo() { return <div className="simple-logo"><span>小</span><div><strong>班級小本本</strong><small>班級聯絡簿</small></div></div>; }
 
-function Login({ onEnter }: { onEnter: (role: 'teacher' | 'family') => void }) {
+function Login({ data, updateData, onEnter }: { data: AppData; updateData: (next: AppData) => void; onEnter: (role: 'teacher' | 'family') => void }) {
   const [role, setRole] = useState<'teacher' | 'family'>('teacher');
-  return <main className="login-page"><section className="login-panel"><Logo /><div className="login-copy"><span>原型工作區</span><h1>從今天的第一筆資料開始</h1><p>這裡沒有預設展示內容。先選擇使用端，再建立自己的班級資料。</p></div><div className="login-choice"><button className={cn(role === 'teacher' && 'selected')} onClick={() => setRole('teacher')}><Users size={19} /><div><strong>教師端</strong><small>建立班級、發布聯絡簿與追蹤作業</small></div>{role === 'teacher' && <Check size={16} />}</button><button className={cn(role === 'family' && 'selected')} onClick={() => setRole('family')}><HomeIcon size={19} /><div><strong>家長端</strong><small>用邀請碼連結孩子，閱讀班級訊息</small></div>{role === 'family' && <Check size={16} />}</button></div><Button className="full-button" onClick={() => onEnter(role)}>進入工作區 <ArrowRight size={16} /></Button><small className="login-note">目前為可操作原型，資料只保存在這個瀏覽器。</small></section></main>;
+  const [secret, setSecret] = useState('');
+  const [invite, setInvite] = useState('');
+  const [error, setError] = useState('');
+  const firstTeacherLogin = !data.teacherPassword;
+  const enterTeacher = () => { if (secret.trim().length < 4) { setError('教師密碼至少需要 4 個字元。'); return; } if (firstTeacherLogin) { updateData({ ...data, teacherPassword: secret.trim() }); onEnter('teacher'); return; } if (secret === data.teacherPassword) { onEnter('teacher'); return; } setError('教師密碼不正確。'); };
+  const enterFamily = () => { if (!data.inviteCode || !data.students.length) { setError('目前還沒有可用的班級邀請碼。'); return; } if (invite.trim().toUpperCase() !== data.inviteCode.toUpperCase()) { setError('邀請碼不正確，請向教師確認。'); return; } updateData({ ...data, linkedChild: data.linkedChild || data.students[0].number }); onEnter('family'); };
+  return <main className="login-page"><section className="login-panel"><Logo /><div className="login-copy"><span>安全登入</span><h1>{role === 'teacher' ? (firstTeacherLogin ? '先設定教師密碼' : '教師登入') : '家長登入'}</h1><p>{role === 'teacher' ? '只有通過教師密碼，才能進入班級管理與作業資料。' : '家長使用教師提供的邀請碼連結孩子；學生不建立登入帳號。'}</p></div><div className="login-choice"><button className={cn(role === 'teacher' && 'selected')} onClick={() => { setRole('teacher'); setError(''); }}><Users size={19} /><div><strong>教師登入</strong><small>班級與作業管理</small></div>{role === 'teacher' && <Check size={16} />}</button><button className={cn(role === 'family' && 'selected')} onClick={() => { setRole('family'); setError(''); }}><HomeIcon size={19} /><div><strong>家長登入</strong><small>聯絡簿與孩子作業</small></div>{role === 'family' && <Check size={16} />}</button></div>{role === 'teacher' ? <label className="login-field">{firstTeacherLogin ? '建立教師密碼' : '教師密碼'}<input type="password" value={secret} onChange={(event) => { setSecret(event.target.value); setError(''); }} placeholder="至少 4 個字元" onKeyDown={(event) => { if (event.key === 'Enter') enterTeacher(); }} /></label> : <label className="login-field">班級邀請碼<input value={invite} onChange={(event) => { setInvite(event.target.value); setError(''); }} placeholder="例如 CLASS-7F2P9" onKeyDown={(event) => { if (event.key === 'Enter') enterFamily(); }} /></label>}{error && <p className="login-error">{error}</p>}<Button className="full-button" onClick={role === 'teacher' ? enterTeacher : enterFamily}>{role === 'teacher' ? (firstTeacherLogin ? '建立並進入教師端' : '登入教師端') : '登入家長端'} <ArrowRight size={16} /></Button><small className="login-note">學生只在教師開啟的大螢幕點選座號，不會取得教師權限。</small></section></main>;
 }
 
 function Topbar({ role, onRole, onLogout }: { role: Role; onRole: (role: Role) => void; onLogout: () => void }) {
-  return <header className="simple-topbar"><Logo /><div className="top-role"><button className={cn(role === 'teacher' && 'active')} onClick={() => onRole('teacher')}>教師端</button><button className={cn(role === 'family' && 'active')} onClick={() => onRole('family')}>家長端</button><button className={cn(role === 'screen' && 'active')} onClick={() => onRole('screen')}>大螢幕</button></div><div className="top-user"><span className="user-avatar">{role === 'family' ? '家' : '師'}</span><span>{role === 'family' ? '家長帳號' : '教師帳號'}</span>{role !== 'screen' && <button aria-label="登出" onClick={onLogout}><LogOut size={15} /></button>}{role === 'screen' && <Button size="sm" variant="outline" onClick={() => onRole('teacher')}><X size={14} /> 離開</Button>}</div></header>;
+  return <header className="simple-topbar"><Logo /><div className="top-role">{role === 'teacher' && <><button className="active">教師端</button><button onClick={() => onRole('screen')}>大螢幕</button></>}{role === 'family' && <button className="active">家長端</button>}{role === 'screen' && <button className="active">大螢幕</button>}</div><div className="top-user"><span className="user-avatar">{role === 'family' ? '家' : '師'}</span><span>{role === 'family' ? '家長帳號' : '教師帳號'}</span>{role !== 'screen' && <button aria-label="登出" onClick={onLogout}><LogOut size={15} /></button>}{role === 'screen' && <Button size="sm" variant="outline" onClick={() => onRole('teacher')}><X size={14} /> 離開</Button>}</div></header>;
 }
 
 function Sidebar({ role, teacherView, familyView, setTeacherView, setFamilyView, data }: { role: Role; teacherView: TeacherView; familyView: FamilyView; setTeacherView: (view: TeacherView) => void; setFamilyView: (view: FamilyView) => void; data: AppData }) {
@@ -100,7 +106,7 @@ export default function Home() {
   useEffect(() => { if (hydrated) window.localStorage.setItem(storageKey, JSON.stringify(data)); }, [data, hydrated]);
   const updateData = (next: AppData) => setData(next);
   if (!hydrated) return <main className="loading-page"><Logo /><span>載入工作區…</span></main>;
-  if (!loggedIn) return <Login onEnter={(nextRole) => { setRole(nextRole); setLoggedIn(true); }} />;
+  if (!loggedIn) return <Login data={data} updateData={updateData} onEnter={(nextRole) => { setRole(nextRole); setLoggedIn(true); }} />;
   if (role === 'screen') return <><Topbar role={role} onRole={setRole} onLogout={() => setLoggedIn(false)} /><Screen data={data} homeworkId={screenHomeworkId} setRole={setRole} updateData={updateData} /></>;
   return <div className="simple-app"><Topbar role={role} onRole={(nextRole) => { setRole(nextRole); if (nextRole === 'teacher') setTeacherView('home'); if (nextRole === 'family') setFamilyView('journal'); }} onLogout={() => setLoggedIn(false)} /><Sidebar role={role} teacherView={teacherView} familyView={familyView} setTeacherView={setTeacherView} setFamilyView={setFamilyView} data={data} />{role === 'teacher' ? teacherView === 'home' ? <TeacherHome data={data} updateData={updateData} go={setTeacherView} /> : teacherView === 'journal' ? <TeacherJournal data={data} updateData={updateData} /> : teacherView === 'homework' ? <TeacherHomework data={data} updateData={updateData} openScreen={(id) => { setScreenHomeworkId(id); setRole('screen'); }} /> : <TeacherClass data={data} updateData={updateData} /> : <FamilyView view={familyView} data={data} updateData={updateData} />}</div>;
 }
