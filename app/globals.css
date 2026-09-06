@@ -275,6 +275,10 @@ body { background-color:#f3eee4; background-image:linear-gradient(rgba(91,84,72,
 /* Keep standalone class-list cards aligned with the rest of the workspace. */
 .class-list-card { padding:22px; }
 @media (max-width:850px) { .class-list-card { padding:19px; } }
+.login-field select { height:38px; padding:0 10px; border:1px solid #dfe3df; border-radius:8px; outline:none; color:var(--ink); background:#fff; font-size:12px; }
+.login-field select:focus { border-color:#9dbdab; box-shadow:0 0 0 3px rgba(107,165,142,.12); }
+.login-field small { color:#52656d; font-size:10px; line-height:1.5; }
+.privacy-note { margin:13px 0 0; padding:10px 12px; border:1px dashed #c9c3b8; border-radius:8px; background:#faf8f0; color:#5f584e; font-size:12px; line-height:1.5; }
 
 /* Gentle notebook motion: page changes, touch feedback, and focus states. */
 @keyframes notebook-page-enter {
