@@ -29,3 +29,16 @@ button,input,textarea { font:inherit; } button { cursor:pointer; }
 @media (max-width:440px) { .simple-logo strong { font-size:12px; }.simple-logo small { display:none; }.top-user > span:not(.user-avatar) { display:none; }.workspace-head h1 { font-size:24px; }.setup-card { padding:18px; }.setup-card .input-row { flex-direction:column; }.input-row button { width:100%; }.student-check-grid { grid-template-columns:repeat(2,1fr); }.family-work { align-items:flex-start; flex-direction:column; }.family-work > button { width:100%; }.screen-grid { grid-template-columns:repeat(3,1fr); }.login-panel { padding:24px 19px; } }
 .simple-pill-neutral { color:#6f7d84; background:#eef1ef; }
 .student-list > div > button { margin-left:auto; flex:none; }
+.work-head-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; justify-content:flex-end; }
+.event-list > div > button { margin-left:auto; flex:none; }
+.setting-line select { min-width:150px; height:32px; padding:0 8px; border:1px solid #dfe3df; border-radius:7px; background:#fff; color:var(--ink); font-size:11px; }
+.journal-history { margin-top:14px; padding:19px; }
+.journal-history .card-heading { margin-bottom:8px; }
+.journal-history > button { display:flex; align-items:center; gap:10px; width:100%; padding:11px 0; border:0; border-top:1px solid #eef0ed; background:transparent; color:var(--ink); text-align:left; }
+.journal-history > button:first-of-type { border-top:0; }
+.journal-history > button span { min-width:72px; color:#9ca6ab; font-size:10px; }
+.journal-history > button strong { flex:1; overflow:hidden; font-size:11px; font-weight:600; text-overflow:ellipsis; white-space:nowrap; }
+.journal-history > button svg { color:#a1abae; }
+.journal-history > button.active strong { color:var(--green-ink); }
+.sent-reply { margin:0; padding:8px 10px; border-radius:7px; background:#f5f8f5; color:#788b82; font-size:10px; line-height:1.5; }
+@media (max-width:440px) { .work-head-actions { width:100%; justify-content:flex-start; }.work-head-actions > button:first-child { flex:1; }.setting-line { align-items:flex-start; flex-direction:column; }.setting-line select { width:100%; }.journal-history > button span { min-width:58px; } }
